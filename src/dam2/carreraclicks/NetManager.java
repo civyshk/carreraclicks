@@ -4,8 +4,8 @@ import java.net.InetAddress;
 
 public class NetManager {
 
-    protected InetAddress getLocalIP(){}
+    protected InetAddress getLocalIP(){return null;}
 
-    private InetAddress getBroadcastIP(){}
+    private InetAddress getBroadcastIP(){return null;}
 
 }

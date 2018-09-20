@@ -1,6 +1,8 @@
 package dam2.carreraclicks;
 
-public class Gui {
+import dam2.carreraclicks.gui.WindowGeneral;
+
+public class GuiManager {
 
     /**
      * Muestra la ventana inicial donde el jugador introduce su nombre
@@ -13,8 +15,11 @@ public class Gui {
      */
     protected void showWindowMainMenu(){}
 
-
-
+    /**
+     * Indica que el usuario ha cerrado una ventana.
+     * Usado por las ventanas del paquete dam2.carreraclicks.gui
+     */
+    public void closing(WindowGeneral window){}
 
 
     protected void showWindowGameName(){}

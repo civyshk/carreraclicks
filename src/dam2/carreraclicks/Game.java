@@ -2,7 +2,7 @@ package dam2.carreraclicks;
 
 public class Game {
 
-    private Gui gui;
+    private GuiManager guiManager;
     private Player localPlayer;
     private NetManager netManager;
 

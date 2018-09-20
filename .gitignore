@@ -1,2 +1,4 @@
 .idea/
+out/
 CarreraClicks.iml
+src/dam2/carreraclicks/TestGui.java
