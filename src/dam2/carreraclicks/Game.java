@@ -1,5 +1,7 @@
 package dam2.carreraclicks;
 
+import dam2.carreraclicks.gui.GuiManager;
+
 public class Game {
 
     private GuiManager guiManager;
