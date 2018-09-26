@@ -1,5 +1,6 @@
 package dam2.carreraclicks.gui;
 
+import dam2.carreraclicks.Game;
 import dam2.carreraclicks.Player;
 import javax.swing.*;
 import java.awt.*;
@@ -14,13 +15,17 @@ import java.awt.event.WindowEvent;
  */
 public class GuiManager extends JFrame {
 
+    private Game game;
+
     private String playerName;
 
     /**
      * Inicializa un objeto capaz de mostrar las distintas ventanas
      * al jugador
      */
-    public GuiManager(){
+    public GuiManager(Game game){
+        this.game = game;
+
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -28,14 +33,17 @@ public class GuiManager extends JFrame {
             }
         });
 
-        playerName = null;
+        this.playerName = null;
     }
 
     /**
      * Muestra la ventana inicial donde el jugador introduce su nombre
+     * @param suggestedName Nombre mostrado inicialmente al jugador.
+     *                      Usar null si no hay ningún nombre guardado
      */
-    public void showWindowName(){
-        setContentPane(new PanelName(this, getDefaultName()));
+    public void showWindowName(String suggestedName){
+        setUserName(suggestedName);
+        setContentPane(new PanelName(this, getSuggestedName()));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(300, 120));
@@ -44,11 +52,19 @@ public class GuiManager extends JFrame {
     }
 
     /**
+     * Establece el nombre que se usará en la GUI para el jugador local
+     * @param name El nombre del jugador, o null si no hay ninguno
+     */
+    public void setUserName(String name){
+        playerName = name;
+    }
+
+    /**
      * Obtiene una propuesta para el nombre que debe mostrarse
      * al jugador en la pantalla de ingreso de nombre
      * @return El nombre propuesto
      */
-    private String getDefaultName(){
+    private String getSuggestedName(){
         if(playerName == null){
             return "";
         }else{
@@ -61,12 +77,8 @@ public class GuiManager extends JFrame {
      * @param name El nombre del jugador
      */
     void userEnteredName(String name){
-        if(name != null){
-            playerName = name.trim().substring(0, 20);
-        }else{
-            playerName = "Jugador";
-        }
-        showWindowMainMenu();
+        setUserName(name);
+        game.userEnteredName(name);
     }
 
     /**

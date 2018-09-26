@@ -13,6 +13,14 @@ public class Game {
     // Desde WindowName
 
     /**
+     * El jugador ha introducido un nombre mediante la interfaz gráfica
+     * @param name El nombre del jugador
+     */
+    public void userEnteredName(String name){
+
+    }
+
+    /**
      * Establece el nombre del jugador local
      * @param name
      */
