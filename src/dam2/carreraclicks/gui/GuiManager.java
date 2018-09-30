@@ -16,8 +16,8 @@ import java.awt.event.WindowEvent;
 public class GuiManager extends JFrame {
 
     private Game game;
-
     private String playerName;
+    private JPanel currentPanel;
 
     /**
      * Inicializa un objeto capaz de mostrar las distintas ventanas
@@ -34,6 +34,7 @@ public class GuiManager extends JFrame {
         });
 
         this.playerName = null;
+        this.currentPanel = null;
     }
 
     /**
@@ -43,7 +44,8 @@ public class GuiManager extends JFrame {
      */
     public void showWindowName(String suggestedName){
         setUserName(suggestedName);
-        setContentPane(new PanelName(this, getSuggestedName()));
+        currentPanel = new PanelName(this, getSuggestedName());
+        setContentPane(currentPanel);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(300, 120));
@@ -86,18 +88,38 @@ public class GuiManager extends JFrame {
      * si crear una nueva partida o buscar partidas existentes
      */
     public void showWindowMainMenu(){
-        setContentPane(new PanelMainMenu(this, playerName));
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+        currentPanel = new PanelMainMenu(this, playerName);
+        setContentPane(currentPanel);
     }
 
+    /**
+     * Muestra una ventana con una lista de servidores a los que
+     * el jugador puede unirse
+     */
+    public void showWindowChooseServer(){
+        currentPanel = new PanelChooseServer(this);
+        setContentPane(currentPanel);
+    }
 
+    /**
+     * Indica que no se ha podido unir a un servidor
+     */
+    public void joiningFailed(String ip){
+        if(currentPanel instanceof PanelChooseServer){
+            ((PanelChooseServer) currentPanel).enableAllServers();
+        }else{
+            System.err.println("Error, se llamó a GuiManager.joiningFailed() pero no está en la ventana de servidores");
+        }
+    }
 
     // Por hacer
 
-    protected void showWindowGameName(){}
+    /**
+     * Muestra una ventana con la lista de jugadores unidos a un servidor
+     */
+    public void showWindowPlayers(String serverIp, String serverName){}
 
-    protected void showWindowGames(){}
+    protected void showWindowGameName(){}
 
     protected void addGame(String ip, String gameName){}
 
