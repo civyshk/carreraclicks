@@ -1,4 +1,4 @@
-package dam2.carreraclicks;
+package carreraclics;
 
 /**
  * Esta clase permite identificar a cada jugador por su IP y su nombre de usuario.
@@ -46,4 +46,9 @@ public class Player {
      * @return Cadena de texto con IP del jugador.
      */
     public String getIp(){return this.ip;}
+    
+    @Override
+    public String toString(){
+        return "Nombre jugador: " + this.name + "\nSu IP: " + (this.ip == null ? "Sin asignar" : this.ip);
+    }
 }
