@@ -1,29 +1,33 @@
-package dam2.carreraclicks;
+package carreraclics;
 
-import dam2.carreraclicks.gui.GuiManager;
+import gui.GuiManager;
+import gui.PanelName;
 
+/**
+ * Game es la clase encargada de controlar todos los recursos del juego.
+ */
 public class Game {
 
     private GuiManager guiManager;
     private Player localPlayer;
-//    private NetManager netManager;
+    private NetManager netManager;
+    private String NOMBRE_POR_DEFECTO = "Anonimo";
 
-    /* TODO Crear jugador, crear gui, crear netManager, mostrar primera ventana */
-    
+    // SUGERENCIA: Hacer una clase con todas las constantes, solo si hay muchas. 
+    /* TODO Crear netManager, mostrar primera ventana */
     public Game(){
-        // NECESITO LA GUI PRINCIPAL WindowName para poder continuar.
-        // 1 - GUI WindowName - Obtener nombre del jugador y asignarselo, esto ultimo se hace al crear el objeto Player mediante el constructor.
-        // 2 - GUI WindowMainMenu - Obtener la IP del jugador y asignarsela al jugador, usando los metodos setIP(cadena).
-        // 3 - A partir de este punto el jugador ya deberia tener tanto IP como nombre.
+        this.guiManager = new GuiManager(this); // Creo un objeto del controlador de interfaces.
+        this.guiManager.showWindowName(this.NOMBRE_POR_DEFECTO); // Pido al controlador de interfaces que muestre la ventana de nombre.
     }
     
-    // Desde WindowName
     /**
-     * El jugador ha introducido un nombre mediante la interfaz gráfica
-     * @param name El nombre del jugador
+     * El jugador ha introducido un nombre mediante la interfaz grafica.
+     * Nota: Este metodo es llamado desde GuiManager.
+     * @param name El nombre del jugador local introducudo desde la GUI
      */
     public void userEnteredName(String name){
-
+        this.localPlayer = new Player(name);
+        System.out.println(this.localPlayer);
     }
 
     // Desde WindowMainMenu
@@ -37,9 +41,7 @@ public class Game {
      * Indica que el usuario desea crear una nueva partida
      */
     protected void initServerMode() {
-    }
-
-    
+}   
     
     
     /**
