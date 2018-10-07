@@ -1,7 +1,7 @@
-package dam2.carreraclicks.gui;
+package carreraclicks.gui;
 
-import dam2.carreraclicks.Game;
-import dam2.carreraclicks.Player;
+import carreraclicks.Game;
+import carreraclicks.Player;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -10,12 +10,12 @@ import java.awt.event.WindowEvent;
 /**
  * GuiManager es la clase encargada de mostrar al jugador toda la
  * información del juego: configuración, servidores, partida, etc.
- * Es la única comunicación de {@link dam2.carreraclicks.Game} con
+ * Es la única comunicación de {@link carreraclicks.Game} con
  * el jugador
  */
 public class GuiManager extends JFrame {
 
-    private Game game;
+    protected Game game;
     private String playerName;
     private JPanel currentPanel;
 

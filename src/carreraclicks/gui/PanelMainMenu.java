@@ -1,4 +1,4 @@
-package dam2.carreraclicks.gui;
+package carreraclicks.gui;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,13 @@
+#Archivos de intellij idea
 .idea/
 out/
 CarreraClicks.iml
+/build/
+
+#Archivos de netbeans
+nbproject/
+build.xml
+manifest.mf
+
+#Otros
 src/dam2/carreraclicks/TestGui.java

@@ -1,4 +1,4 @@
-package dam2.carreraclicks;
+package carreraclicks;
 
 import java.net.InetAddress;
 

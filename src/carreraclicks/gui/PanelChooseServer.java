@@ -1,4 +1,4 @@
-package dam2.carreraclicks.gui;
+package carreraclicks.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,12 +12,17 @@ import java.util.List;
  * o crear una partida nueva
  */
 public class PanelChooseServer extends JPanel {
+    
+    private GuiManager guiManager;
+    
     private JButton btnBack;
     private JPanel pnlServers;
     private List<Server> servers;
     private JoinListener joinListener;
 
     public PanelChooseServer(GuiManager guiManager){
+        this.guiManager = guiManager;
+        
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         servers = new ArrayList<>();
@@ -82,7 +87,7 @@ public class PanelChooseServer extends JPanel {
                     enableAllServers(false);
 
                     //avisar a Game para que se una al servidor
-                    game.joinServer(s.ip);
+                    guiManager.game.joinServer(s.ip);
 
                     return;
                 }
