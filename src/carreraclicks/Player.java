@@ -1,4 +1,4 @@
-package juegoclics;
+package carreraclicks;
 
 /**
  * Esta clase permite identificar a cada jugador por su IP y su nombre de usuario.
@@ -17,7 +17,7 @@ public class Player {
     public Player(String name) {
         this.setName(name);
     }
-    
+   
     /**
      * Este metodo permite definir un nombre a un jugador.
      * En caso de que sea demasiado largo (+10 caracteres) se cortara y si es NULL o esta vacio pondra "Anonimo" por defecto.
@@ -46,4 +46,9 @@ public class Player {
      * @return Cadena de texto con IP del jugador.
      */
     public String getIp(){return this.ip;}
+    
+    @Override
+    public String toString(){
+        return "Nombre jugador: " + this.name + "\nSu IP: " + (this.ip == null ? "Sin asignar" : this.ip);
+    }
 }
